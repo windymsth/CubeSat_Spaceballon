@@ -1,0 +1,22 @@
+<NotepadPlus>
+    <Project name="cubesat_spaceballon">
+        <File name="cubesat_spaceballon.ino" />
+        <File name="GPS_Parsing.ino" />
+        <File name="WDT.ino" />
+        <File name="type.h" />
+        <File name="I2Cdev.h" />
+        <File name="I2Cdev.cpp" />
+        <File name="sensor.h" />
+        <File name="sensor.cpp" />
+        <File name="SHT31.cpp" />
+        <File name="SHT31.h" />
+        <Folder name="IMU">
+            <File name="MPU6050.h" />
+            <File name="MPU6050.cpp" />
+            <File name="uHMC5883L.h" />
+            <File name="uHMC5883L.cpp" />
+            <File name="BMP180.h" />
+            <File name="BMP180.cpp" />
+        </Folder>
+    </Project>
+</NotepadPlus>
