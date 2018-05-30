@@ -2,8 +2,8 @@
 //#include <Servo.h>
 #include "solP_ctr.h"
 
-extern volatile char L_servo_current_deg = L_SERVOR_DOWN;    //***modify by wmy
-extern volatile char R_servo_current_deg = R_SERVOR_DOWN;    //***modify by wmy
+extern volatile char L_servo_current_deg = L_SERVOR_DOWN;    
+extern volatile char R_servo_current_deg = R_SERVOR_DOWN;    
 
 //Servo myservoR, myservoL;
 Adafruit_TiCoServo myservoR, myservoL;    //***modify by wmy
@@ -31,6 +31,12 @@ void solar_Servo_Init()
   Serial.println("Servo Actived!");
   Serial.println();
 }
+
+void action_separation(void) {
+  myservoL.write(L_SERVOR_DOWN);
+  myservoR.write(R_SERVOR_DOWN);
+}
+
 void set_solar_panel_up() {
 		Serial.println("act up");
     sys_data.is_solar_panel_on = true;

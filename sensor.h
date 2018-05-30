@@ -3,6 +3,7 @@
 
 //	user include
 #include "type.h"
+#define RF_SERIAL Serial3
 
 #include "SHT31.h"
 #include "MPU6050.h"

@@ -20,11 +20,12 @@
 extern Adafruit_TiCoServo myservoR, myservoL;
 
 //***** User function ******//
-void solar_Servo_Init();
-void set_solar_panel_up();
-void set_solar_panel_down();
-void set_solar_panel_left_up();
-void set_solar_panel_right_up();
+void solar_Servo_Init(void);
+void action_separation(void);
+void set_solar_panel_up(void);
+void set_solar_panel_down(void);
+void set_solar_panel_left_up(void);
+void set_solar_panel_right_up(void);
 
 #endif
 

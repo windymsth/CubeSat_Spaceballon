@@ -4,8 +4,8 @@
 
 ISR(WDT_vect) {  
     static unsigned int heartCnt = 0;
-    Serial.print("Heart count: ");
-    Serial.println(++heartCnt, DEC);
+//    Serial.print("Heart count: ");
+//    Serial.println(++heartCnt, DEC);
 }
 
 void OFF_ACD_ADC(void) {

@@ -5,7 +5,7 @@
 #include <advancedSerial.h>
 #include <SimpleKalmanFilter.h>
 
-#define RF_SERIAL Serial3
+//#define RF_SERIAL Serial3
 
 SENSOR_Type sys_data;
 

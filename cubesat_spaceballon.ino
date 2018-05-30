@@ -33,6 +33,7 @@ volatile bool F_9000m_Baro_getOffset = false;
 volatile float takeoff_gps_alt = 0.0;
 volatile float takeoff_brao_alt = 0.0;
 volatile long takeoff_monment_time_sec = 0;
+volatile long Safty_9000m_timer = 0;
 
 void task_balloon_separation(void) {
   //
@@ -40,16 +41,16 @@ void task_balloon_separation(void) {
     if( F_GetAlt == false ) {
       takeoff_gps_alt = sys_data.gps_altitude;
       takeoff_brao_alt = sys_data.baro_altitude;
-      RF.SERIAL.println("Get nowtime ground GPS_Altitude and Baro_Altitude !");
-      RF.SERIAL.print("Ground GPS_Altitude: ");RF.SERIAL.println(takeoff_gps_alt);  
-      RF.SERIAL.print("Ground Baro_Altitude: ");RF.SERIAL.println(takeoff_brao_alt);
+      RF_SERIAL.println("Get nowtime ground GPS_Altitude and Baro_Altitude !");
+      RF_SERIAL.print("Ground GPS_Altitude: ");RF_SERIAL.println(takeoff_gps_alt);  
+      RF_SERIAL.print("Ground Baro_Altitude: ");RF_SERIAL.println(takeoff_brao_alt);
       F_GetAlt = true;
     }
     if( ((sys_data.gps_altitude - takeoff_gps_alt) > 50 || (sys_data.baro_altitude - takeoff_brao_alt) > 50) 
         && F_takeoff == false) {
-      RF.SERIAL.println("ATTENTION ! SPACEBALLON TAKEOFF !");
-      RF.SERIAL.println("ATTENTION ! SPACEBALLON TAKEOFF !");
-      RF.SERIAL.println("ATTENTION ! SPACEBALLON TAKEOFF !");
+      RF_SERIAL.println("ATTENTION ! SPACEBALLON TAKEOFF !");
+      RF_SERIAL.println("ATTENTION ! SPACEBALLON TAKEOFF !");
+      RF_SERIAL.println("ATTENTION ! SPACEBALLON TAKEOFF !");
       F_takeoff = true;
       takeoff_monment_time_sec = millis() / 1000;
     }
