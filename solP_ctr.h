@@ -4,11 +4,8 @@
 #include "sensor.h"
 
 //***** User define ******//
-//#define SERVO_PIN_R    8  //R 8
-//#define SERVO_PIN_L    7  //L 7
-
-#define SERVO_PIN_R     8
 #define SERVO_PIN_L     7
+#define SERVO_PIN_R     8
 #define SERVO_MIN  500 // 0.5 ms pulse
 #define SERVO_MAX 2500 // 2.5 ms pulse
 
@@ -21,7 +18,7 @@ extern Adafruit_TiCoServo myservoR, myservoL;
 
 //***** User function ******//
 void solar_Servo_Init(void);
-void action_separation(void);
+void Action_separation(void);
 void set_solar_panel_up(void);
 void set_solar_panel_down(void);
 void set_solar_panel_left_up(void);

@@ -13,7 +13,7 @@ void setup()
   Serial.begin(250000);
   Serial.println("Serial Debug Port Init OK!");
   Wire.begin();
-  Serial.println("IIC Bus Enable...");
+  Serial.println("IIC Bus Enable...\r\n");
 	solar_Servo_Init();
   setup_watchdog(2);// 32ms 
   GPS_init();
@@ -34,8 +34,11 @@ volatile float takeoff_gps_alt = 0.0;
 volatile float takeoff_brao_alt = 0.0;
 volatile long takeoff_monment_time_sec = 0;
 volatile long Safty_9000m_timer = 0;
-
+void task_saftyHandle(void) {
+  
+}
 void task_balloon_separation(void) {
+  task_saftyHandle();
   //
   if( GPS.fix == true && GPS.fixquality == true && F_takeoff == false) {
     if( F_GetAlt == false ) {
@@ -71,6 +74,7 @@ void task_balloon_separation(void) {
           offset_baroAlt = sys_data.gps_altitude - sys_data.baro_altitude;
           Safty_9000m_timer = millis();
           F_9000m_Baro_getOffset = true;
+          RF_SERIAL.println("ATTENTION ! SPACEBALLON RISE TO 9000m !");
         }
       }
       
@@ -79,14 +83,21 @@ void task_balloon_separation(void) {
       
       //  Safty_9000m_timer：9000m时启动的安全计时器
       if( (millis() - Safty_9000m_timer) > 10*1000 ) {
-          action_separation();
+          RF_SERIAL.println("WARNING ! SAFTY_TIMER_A ACTION !");
+          
+          Action_separation();
+
+          RF_SERIAL.println("ATTENTION ! SEPARATION ACTION !");
       }
       
       //  释放策略A：如果GPS可靠，依赖GPS高程执行释放
       if( sys_data.gps_altitude > 11000 ) {
         
         if( sys_data.gps_altitude > 12000 ) {
-          action_separation();
+          
+          Action_separation();
+          
+          RF_SERIAL.println("ATTENTION ! SEPARATION ACTION !");
         }
       }
       
@@ -94,7 +105,10 @@ void task_balloon_separation(void) {
       else {
 
         if( sys_data.baro_altitude > 12000 ) {
-          action_separation();
+          
+          Action_separation();
+          
+          RF_SERIAL.println("ATTENTION ! SEPARATION ACTION !");
         }
       }
     }// *** end ->  "if( F_9000m_Baro_getOffset ==true )"

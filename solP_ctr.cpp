@@ -28,13 +28,12 @@ void solar_Servo_Init()
 	myservoR.write(R_SERVOR_DOWN);
   Serial.println("Servo attach finished!");
 	delay(1000);
-  Serial.println("Servo Actived!");
-  Serial.println();
+  Serial.println("Servo Actived!\r\n");
 }
 
-void action_separation(void) {
-  myservoL.write(L_SERVOR_DOWN);
-  myservoR.write(R_SERVOR_DOWN);
+void Action_separation(void) {
+  myservoL.write(L_SERVOR_UP);
+  myservoR.write(R_SERVOR_UP);
 }
 
 void set_solar_panel_up() {
