@@ -6,8 +6,6 @@
 //#define PROCESSING_SERIAL_DEBUG   true
 //#define PROCESSING_SERIAL_DEBUG   flase
 /*-------Ver Config--------------*/
-volatile uint32_t timeSlice = 0;
-volatile uint32_t nowTimes = 0;
 void setup()
 {
   Serial.begin(250000);
@@ -117,6 +115,8 @@ void task_balloon_separation(void) {
 }
 
 uint8_t sliceType = pm2_5Type;
+volatile uint32_t timeSlice = 0;
+volatile uint32_t nowTimes = 0;
 void loop()
 {
   static uint8_t task_comm = 0;

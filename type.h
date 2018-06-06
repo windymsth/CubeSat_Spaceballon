@@ -1,7 +1,6 @@
 #ifndef __TYPE_H__
 #define __TYPE_H__
 
-#define SLICE_MS 20
 enum Slice_Type
 {
 	defaultType = 0,
